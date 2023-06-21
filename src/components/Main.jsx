@@ -1,21 +1,13 @@
-
-
 import React from "react";
 import "./Main.css";
 import { useState, useEffect } from "react";
 import Spinner from "./Spinner";
 
 function Main() {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState("Allahabad");
   const [temp, setTemp] = useState("");
   const [feelsLike, setFeelsLike] = useState("");
   const [loading, setLoading] = useState(false);
-
-  const defalt = "Allahabad";
-  if (input === " ") {
-    setInput(defalt);
-  }
-  
 
   const handleOnChange = (e) => {
     setInput(e.target.value);
@@ -79,39 +71,34 @@ function Main() {
   return (
     <div className="main_container">
       <div className="child">
-        
         <div className="first_row">
-        <input className="input_area"
-          type="text"
-          value={input}
-          onChange={handleOnChange}
-          placeholder="Search..."
-        />
-          </div>
-      
-        <div className="second_row">
-          <h1 >{input}</h1>
+          <input
+            className="input_area"
+            type="text"
+            value={input}
+            onChange={handleOnChange}
+            placeholder="Search..."
+          />
         </div>
-        
-        <div className="third_row">
 
-       
-        <h3 >
-          {`${Week} ${todaydate} ${Month} ${year}`}{" "}
-        </h3>
+        <div className="second_row">
+          <h1>{input}</h1>
+        </div>
+
+        <div className="third_row">
+          <h3>{`${Week} ${todaydate} ${Month} ${year}`} </h3>
         </div>
         <div className="temp_box">
           {loading ? <Spinner /> : <h1 id="center_temp">{temp}&deg;c</h1>}
         </div>
         <div className="fifth_row">
-        <h3 className="center_text">{`Feels Like ${feelsLike}`}&deg;C</h3>
+          <h3 className="center_text">{`Feels Like ${feelsLike}`}&deg;C</h3>
         </div>
         <div className="sixth_row">
-        <h1 className="center_text">Clouds</h1>
+          <h1 className="center_text">Clouds</h1>
         </div>
       </div>
-      </div>
-    
+    </div>
   );
 }
 
